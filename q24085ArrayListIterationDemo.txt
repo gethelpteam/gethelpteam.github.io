@@ -1,0 +1,15 @@
+import java.util.*;
+class ArrayListIterationDemo {	
+	public static void main(String args[]) {
+		ArrayList<String> obj = new ArrayList<String>();
+		for(int i=0;i<args.length;i++) {
+			obj.add(args[i]);
+		}
+		System.out.println(obj);
+		HashSet<String> has = new HashSet(obj);		
+		System.out.println("List after removing duplicate elements:");
+		for(String l:has) {
+			System.out.println(l);
+		}
+	}
+}

@@ -1,0 +1,39 @@
+import java.util.Scanner;
+abstract class Figure{
+	double dim1,dim2;
+	Figure(double d1,double d2){	
+		dim1=d1;	
+		dim2=d2;	
+		}	
+	abstract double area();
+	}
+class Rectangle extends Figure{
+	Rectangle(double d1,double d2){
+		super(d1,d2);
+		}
+	double area(){
+		return dim1*dim2;	
+		}}
+class Triangle extends Figure{
+	Triangle(double d1,double d2){
+		super(d1,d2);
+	}	
+	double area(){
+		return 0.5*dim1*dim2;
+}}
+class CalcArea{	
+	public static void main(String a[]){
+		Scanner s = new Scanner (System.in);
+		System.out.print("Enter length of rectangle: ");	
+		double l = s.nextDouble();	
+		System.out.print("Enter breadth of rectangle: ");
+		double w = s.nextDouble();
+		Figure f = new Rectangle(l,w);
+		System.out.println("The area of rectangle with sides "+l+" and "+w+" is: "+f.area());
+		System.out.print("Enter base of triangle: ");		double b = s.nextDouble();	
+		System.out.print("Enter height of triangle: ");		
+		double h = s.nextDouble();		
+		f = new Triangle(b,h);	
+		System.out.println("The area of rectangle with sides "+b+" and "+h+" is: "+f.area());
+	}
+}

@@ -1,0 +1,24 @@
+import java.util.*;
+class BoxDemo {
+	double l,b,h;
+	BoxDemo(double le,double br,double he) {
+		l=le;
+		b=br;
+		h=he;
+		}	
+	public void vol() {	
+		System.out.println("Volume is "+(l*b*h));
+	}
+	public static void main(String args[]) { 
+		double l1,b1,h1;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the length of box:");
+		l1=sc.nextDouble();	
+		System.out.println("Enter the breadth of box:");
+		b1=sc.nextDouble();		
+		System.out.println("Enter height of box:");
+		h1=sc.nextDouble();		
+		BoxDemo obj=new BoxDemo(l1,b1,h1);	
+		obj.vol();
+		}
+}

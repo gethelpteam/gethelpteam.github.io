@@ -1,0 +1,66 @@
+package q2499;
+class Q{
+	int n;	
+	boolean valueSet = false;
+	synchronized int get(){
+		while(!valueSet)	
+		try{
+			wait();
+		}	
+	catch(InterruptedException e){
+	System.out.println("InterruptedException caught");
+	}	
+System.out.println("Got: "+n);
+valueSet = false;
+notify();		
+return n;
+	}	
+synchronized void put(int n){
+	while(valueSet)
+try{		
+	wait();
+}		
+catch(InterruptedException e){	
+System.out.println("InterruptedException caught");	
+}		
+this.n = n;
+valueSet = true;	
+System.out.println("Put: "+n);
+notify();	
+}}
+class Producer implements Runnable{	
+	Q q;
+	int n;
+	boolean stop = false;
+	Producer(Q q,int n){
+		this.q = q;		
+		this.n = n;
+	}	
+public void run(){
+	for(int i=0;i<n;i++){
+		q.put(i);	
+	}
+}}
+class Consumer implements Runnable{
+Q q;
+int n;
+boolean stop = false;
+Consumer(Q q,int n){
+	this.q = q;	this.n = n;
+}	
+public void run(){
+	for(int i=0;i<n;i++){		
+		q.get();
+	}
+}}
+class ProdCons{	public static void main(String args[])throws Exception{	
+	Q q = new Q();
+	int n = Integer.parseInt(args[0]);
+	Producer p = new Producer(q,n);
+	Consumer c = new Consumer(q,n);	
+	Thread t = new Thread(p);
+	Thread t1 = new Thread(c);
+	t.start();
+	t1.start();
+	System.out.println("Producer-Consumer problem using the concept of Interthread Communication");
+	}}

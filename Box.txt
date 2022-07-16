@@ -1,0 +1,33 @@
+package q11267;
+class Box {	
+	double l,b,h;
+	Box() {
+		l=-1;	
+		b=-1;	
+		h=-1;
+	}
+	Box(double length) {
+		l=b=h=length;
+	}
+	Box(double width,double height,double depth) {
+		l=width;
+		b=height;
+		h=depth;
+	}	
+	public double volume() {
+		return (l*b*h);
+	}
+	public static void main(String args[]) {	
+		double l,b,h;
+		int n=args.length;
+		if(n==3) {		
+			l=Double.parseDouble(args[0]);
+			b=Double.parseDouble(args[1]);
+			h=Double.parseDouble(args[2]);
+			System.out.println("Volume of Box("+l+", "+b+", "+h+") is : "+new Box(l,b,h).volume());	
+		}	else if(n==1) {
+				l=Double.parseDouble(args[0]);			
+				System.out.println("Volume of Box("+l+") is : "+new Box(l).volume());		
+			}		else {		
+				System.out.println("Volume of Box() is : "+new Box().volume());	
+}	}}

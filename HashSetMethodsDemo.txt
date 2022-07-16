@@ -1,0 +1,13 @@
+import java.util.*;
+class HashSetMethodsDemo{
+	public static void main(String args[]) throws Exception{	
+		TreeSet<Object> ints = new TreeSet<Object>();
+		for(int i=0;i<args.length;i++){	
+			ints.add(args[i]);	
+		}	
+	TreeSet<Object> intsReverse = (TreeSet<Object>)ints.descendingSet();
+	System.out.println("Traversing element through Iterator in descending order");
+	for(Object ob : intsReverse){
+		System.out.println(ob);
+	}
+}}
