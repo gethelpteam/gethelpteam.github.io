@@ -1,0 +1,239 @@
+ <html>
+    <head>
+	   <title>javascript registration form</title>
+	   <script type='text/javascript'>
+	          function formValidation()
+			  {
+			        var uid=document.form1.userid;
+					var passid=document.form1.passid;
+                    var uname=document.form1.username;
+					var uadd=document.form1.address;
+					var ucountry=document.form1.country;
+					var uzip=document.form1.zip;
+					var uemail=document.form1.email;
+					var umg=document.form1.mg;
+					var ufg=document.form1.fg;
+					if(userid_validation(uid,5,12))
+					{
+					     if(passid_validation(passid,7,12))
+						 {
+						      if(allLetter(uname))
+							  {
+							       if(alphanumeric(uadd))
+								   
+								   {
+								     if(allnumeric(uzip))
+						             {
+					 					if(validEmail(uemail))
+												{
+												  if(countrySelect(ucountry))
+										            {
+												        if(validGender(umg,ufg))
+														{
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+					
+				return false;
+				}
+				function userid_validation(uid,mx,my)
+				{
+				      var uid_len=uid.value.length;
+					  if(uid_len == 0 || uid_len > my || uid_len < mx)
+					  {
+					       alert("user id should not be empty/length should be"+mx+"to"+my);
+						   uid.focus();
+						   return false;
+					}
+					return true;
+				}
+				function passid_validation(passid,mx,my)
+				{
+				      var passid_len=passid.value.length;
+					  if(passid_len == 0 || passid_len > my || passid_len < mx)
+					  {
+					       alert("password id should not be empty/length should be"+mx+"to"+my);
+						   passid.focus();
+						   return false;
+					}
+					return true;
+				}
+				function allLetter(uname)
+				{
+				    var letters=/^[A-Za-z]+$/;
+					if(uname.value.match(letters))
+					{
+					    return true;
+					}
+					else
+					{
+					      alert('please input alphabet characters only');
+						  uname.focus();
+						  return false;
+					}
+				}
+				function alphanumeric(uadd)
+				{
+				    var letters=/^[0-9A-Za-z]+$/;
+					if(uadd.value.match(letters))
+					{
+					    return true;
+					}
+					else
+					{
+					      alert('please input alphanumeric characters only');
+						  uadd.focus();
+						  return false;
+					}
+				}
+				function allnumeric(uzip)
+				{
+				    var letters=/^[0-9]+$/;
+					if(uzip.value.match(letters))
+					{
+					    return true;
+					}
+					else
+					{
+					      alert('please input numbers characters only');
+						  uzip.focus();
+						  return false;
+					}
+				}
+				function validEmail(uemail)
+				{
+				    var letters=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+					if(uemail.value.match(letters))
+					{
+					    return true;
+					}
+					else
+					{
+					      alert('you have invalid input address');
+						  uemail.focus();
+						  return false;
+					}
+				}
+				function countrySelect(ucountry)
+				{
+				     if(ucountry.value=="Default")
+					 {
+					     alert('Selct ypur country from the list');
+						 ucountry.focus();
+						 return false;
+					}
+					else
+					{
+					return true;
+					}
+				}
+				function validGender(umg,ufg)
+				{
+				     x=0;
+					 if(ufg.checked)
+					 {
+					     x++;
+				      }
+					   if(umg.checked)
+					 {
+					     x++;
+				      }
+					  if(x==0)
+					 {
+					     alert('Select male/female');
+						 umg.focus();
+						 return false;
+					}
+					else
+					{
+					alert('form successfully submitted');
+					return true;
+					}
+				}
+			</script>
+		</head>
+	<body>
+	<center>
+	    <form name="form1" onSubmit='return formValidation()'>
+		    <table width="500" cellpadding="3" style="border-collapse:collapse;">
+			<tr>
+			     <td>Userid</td>
+				 <td><input type="text" name="userid" style="12" value=""/></td>
+			</tr>
+			<tr>
+			     <td>Password</td>
+				 <td><input type="password" name="passid" style="12" value=""/></td>
+			</tr>
+			<tr>
+			     <td>Name</td>
+				 <td><input type="text" name="username" style="50" value=""/></td>
+			</tr>
+			<tr>
+			     <td>Address</td>
+				 <td><input type="text" name="address" style="50" value=""/></td>
+			</tr>
+			<tr>
+			     <td>ZIP code</td>
+				 <td><input type="text" name="zip" value=""/></td>
+			</tr>
+			<tr>
+			     <td>Email</td>
+				 <td><input type="text" name="email" size="50" value=""/></td>
+			</tr>
+			<tr>
+			    <td>Select a Country</td>
+				<td><Select name="country">
+				       <option selected=" " value="Default">(Please select a country)</option>
+					   <option>Australia</option>
+					   <option>Canada</option>
+					   <option>India</option>
+					   <option>Pakisthan</option>
+					   <option>South Afriaca</option>
+					   <option>America</option>
+					   <option>Russia</option>
+					   <option>Indonesia</option>
+					   <option>USA</option>
+	                  </select>
+                </td>
+            </tr>
+             <tr>
+			     <td>Gender</td>
+				 <td><input type="radio" name="mg" value="male"/>Male
+				     <input type="radio" name="fg" value="female"/>Female
+				   
+				 </td>
+			</tr>
+			 <tr>
+			     <td>Language Preference</td>
+				 <td><input type="radio" name="en" value="en"/>English
+				     <input type="radio" name="nonen" value="noneng"/>Non english
+				   
+				 </td>
+			</tr>
+			<tr>
+			     <td>write about yourself</td>
+				 <td><textarea name="desc" rows="4" cols="40"></textarea></td>
+			</tr>
+			<tr>
+			      <td>&nbsp;</td>
+				  <td><input type="submit" name="submit" value="submit"></td>
+				  <td>&nbsp;</td>
+			</tr>
+		</table>
+		</form>
+		</center>
+	</body>
+	</html>
+			
+					   			
+					   
+  					   
+				   
+				
+				
+				
